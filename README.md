@@ -21,7 +21,7 @@ independently as a percentage of the full-scale, i.e. **`[-100%, 100%]`**.
 The motors exhibit their own dynamics, therefore e.g. the craft cannot come to a
 complete stop at once.
 
-The craft has also a **radar** that allows acquiring a complete scan of the maze.
+In addition, a **radar** is available that allows acquiring a complete **scan of the maze** plus the **odometry of the craft**.
 
 ### Obstacles
 The obstacles are always in a **fixed number**, **circular** and **located randomly**
@@ -38,7 +38,7 @@ port.write();
 ```
 
 ### Scanning the Maze
-It is required to receive a `yarp::os::Property` from the port `/assignment_solve-maze-handler/radar:o` containing the up-to-date scanning results in the following format:
+It is required to receive a `yarp::os::Property` from the port `/assignment_solve-maze-handler/radar:o` containing the up-to-date results of the scan and odometry in the following format:
 ```
 (length <l>) (time <t>) (craft (<x> <y> <d>)) (target (<x> <y> <r>)) (obstacles ((<x> <y> <r>) (<x> <y> <r>) ...)) (state <s>)
 ```
