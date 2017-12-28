@@ -41,10 +41,10 @@ port.write();
 ### Scanning the Maze
 It is required to receive a `yarp::os::Property` from the `/assignment_solve-maze-handler/radar:o` port containing the up-to-date scanning
 results in the following format:
-```c++
+```
 (length <l>) (time <t>) (craft (<x> <y> <d>)) (target (<x> <y> <r>)) (obstacles ((<x> <y> <r>) (<x> <y> <r>) ...)) (state <s>)
 ```
-where:
+Where:
 - `<l>` represents the length of the maze wall (integer).
 - `<t>` is the current time in seconds (double).
 - `<x>`, `<y>` are the coordinates of the item within the maze (double).
