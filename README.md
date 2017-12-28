@@ -56,8 +56,8 @@ into maze walls. By contrast, the maze is solved whenever the craft is driven
 into the target area (still circular).
 
 ## How to proceed
-We provide you with a code controlling the craft that performs a very basic random
-search. Will you be able to come up with a better strategy? :wink:
+We provide in [**src/craft.cpp**](./src/craft.cpp) a code controlling the craft that performs a very basic random
+search. Will you be able to modify the code to implement a better strategy? :wink:
 
 Once done, you can test your code in two ways:
 
