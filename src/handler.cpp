@@ -34,7 +34,6 @@
 #define MAZE_L  500
 
 using namespace std;
-using namespace cv;
 using namespace yarp::os;
 using namespace yarp::sig;
 using namespace yarp::math;
@@ -52,7 +51,7 @@ class CircleObject : public GraphicObject {
  protected:
   Vector c;
   double r;
-  Scalar bound_color, fill_color;
+  cv::Scalar bound_color, fill_color;
 
  public:
   CircleObject(const Vector& center, const double radius) :
@@ -61,18 +60,19 @@ class CircleObject : public GraphicObject {
       fill_color(0, 0, 0) { }
 
   Bottle getInfo() const override {
+    Vector v = cat(c, r);
     Bottle info;
-    info.addList().read(cat(c, r));
+    info.addList().read(v);
     return info;
   }
 
   void draw(ImageOf<PixelRgb>& img) const override {
-    Point c_((int)c[0], (int)(img.height() - c[1]));
+    cv::Point c_((int)c[0], (int)(img.height() - c[1]));
     int r_ = (int)r;
 
-    Mat imgMat = cvarrToMat(img.getIplImage());
-    circle(imgMat, c_, r_, fill_color, CV_FILLED);
-    circle(imgMat, c_, r_, bound_color, 1);
+    cv::Mat imgMat = cv::cvarrToMat(img.getIplImage());
+    cv::circle(imgMat, c_, r_, fill_color, CV_FILLED);
+    cv::circle(imgMat, c_, r_, bound_color, 1);
   }
 
   bool inside(const Vector& point) const {
@@ -85,7 +85,7 @@ class Obstacle : public CircleObject {
  public:
   Obstacle(const Vector& center, const double radius) :
       CircleObject(center, radius) {
-    fill_color = Scalar(249, 196, 71);
+    fill_color = cv::Scalar(249, 196, 71);
   }
 };
 
@@ -94,14 +94,14 @@ class Target : public CircleObject {
  public:
   Target(const Vector& center, const double radius) :
       CircleObject(center, radius) {
-    fill_color = Scalar(72, 208, 154);
+    fill_color = cv::Scalar(72, 208, 154);
   }
 };
 
 
 class Craft : public GraphicObject {
   double r;
-  Scalar color;
+  cv::Scalar color;
 
   vector<Vector> points;
 
@@ -168,14 +168,14 @@ class Craft : public GraphicObject {
     T(0, 2) = curState[0];
     T(1, 2) = curState[1];
 
-    vector<Point> pts;
+    vector<cv::Point> pts;
     for (auto& point:points) {
       Vector p = T * point;
-      pts.push_back(Point((int)p[0], (int)(img.height() - p[1])));
+      pts.push_back(cv::Point((int)p[0], (int)(img.height() - p[1])));
     }
 
-    vector<vector<Point>> poly(1, pts);
-    fillPoly(cvarrToMat(img.getIplImage()), poly, color);
+    vector<vector<cv::Point>> poly(1, pts);
+    cv::fillPoly(cv::cvarrToMat(img.getIplImage()), poly, color);
   }
 
   virtual ~Craft() {
