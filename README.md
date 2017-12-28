@@ -2,7 +2,7 @@ Solve a Maze
 ============
 
 # Assignment
-The goal is to drive a craft toward the target while avoiding the obstacles.
+Drive a craft toward the target avoiding the obstacles.
 
 ![maze](/misc/maze.png)
 
