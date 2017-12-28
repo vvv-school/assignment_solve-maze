@@ -24,7 +24,7 @@ complete stop at once.
 In addition, a **radar** is available that allows acquiring a complete **scan of the maze** plus the **odometry of the craft**.
 
 ### The obstacles
-The obstacles are always in a **fixed number**, **circular** and **located randomly**
+The obstacles are always in a **fixed number**, **circular**, of **different size** and **located randomly**
 within the maze.
 
 ### Driving the craft
