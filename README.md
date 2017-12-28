@@ -28,8 +28,7 @@ The obstacles are always in a **fixed number**, **circular** and **located rando
 within the maze.
 
 ### Driving the Craft
-It is required to send a `yarp::os::Bottle` to the `/assignment_solve-maze-handler/motor:i`
-port, containing two double representing the angular and the linear speed:
+It is required to send a `yarp::os::Bottle` to the port `/assignment_solve-maze-handler/motor:i` containing two double representing the angular and the linear speed:
 ```c++
 yarp::os::Bottle &speed=portMotor.prepare();
 speed.clear();
@@ -39,8 +38,7 @@ port.write();
 ```
 
 ### Scanning the Maze
-It is required to receive a `yarp::os::Property` from the `/assignment_solve-maze-handler/radar:o` port containing the up-to-date scanning
-results in the following format:
+It is required to receive a `yarp::os::Property` from the port `/assignment_solve-maze-handler/radar:o` containing the up-to-date scanning results in the following format:
 ```
 (length <l>) (time <t>) (craft (<x> <y> <d>)) (target (<x> <y> <r>)) (obstacles ((<x> <y> <r>) (<x> <y> <r>) ...)) (state <s>)
 ```
