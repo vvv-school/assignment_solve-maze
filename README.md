@@ -19,7 +19,7 @@ The craft is equipped with **2 motors** that enable clock/counter-clock wise rot
 so as forward/backward linear motion. You can control the **speed** of the motors
 independently as a percentage of the full-scale, i.e. **`[-100%, 100%]`**.
 The motors exhibit their own dynamics, therefore e.g. the craft cannot come to a
-complete stop all at once.
+complete stop at once.
 
 The craft has also a **radar** that allows acquiring a complete scan of the maze.
 
