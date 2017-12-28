@@ -53,7 +53,7 @@ Where:
 ### Crashing & Accomplishing
 The craft is considered to be a **point** and can crash into obstacles as well as
 into maze walls. By contrast, the maze is solved whenever the craft is driven
-within the target area (still circular).
+into the target area (still circular).
 
 ## How to proceed
 We provide you with a code controlling the craft that performs a very basic random
