@@ -32,8 +32,8 @@ It is required to send a `yarp::os::Bottle` to the port `/assignment_solve-maze-
 ```c++
 yarp::os::Bottle &speed=portMotor.prepare();
 speed.clear();
-speed.addDouble(-60); // angular speed in percentage [-100%, 100%]
-speed.addDouble(100); // linear speed in percentage [-100%, 100%]
+speed.addDouble(-60.0); // angular speed in percentage [-100%, 100%]
+speed.addDouble(100.0); // linear speed in percentage [-100%, 100%]
 port.write();
 ```
 
