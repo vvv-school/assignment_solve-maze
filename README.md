@@ -2,7 +2,7 @@ Solve a Maze
 ============
 
 # Assignment
-Drive a craft toward the target avoiding the obstacles.
+Design and implement an autonomous driving system that will move the craft toward the target while avoiding the obstacles.
 
 ![maze](/misc/maze.png)
 
