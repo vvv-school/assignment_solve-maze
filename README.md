@@ -8,13 +8,13 @@ Design and implement an autonomous driving system that will move the craft towar
 
 To solve the quest you need to know the following things.
 
-### Maze
+### The maze
 The maze is a 2D square area containing the target, the craft and a number of
 obstacles. The origin `(0,0)` is located at the bottom-left corner of the picture
 above, whereas the x-axis is the left->right direction and the y-axis is the down->up
 direction.
 
-### Craft
+### The craft
 The craft is equipped with **2 motors** that enable clock/counter-clock wise rotation
 so as forward/backward linear motion. You can control the **speed** of the motors
 independently as a percentage of the full-scale, i.e. **`[-100%, 100%]`**.
@@ -23,11 +23,11 @@ complete stop at once.
 
 In addition, a **radar** is available that allows acquiring a complete **scan of the maze** plus the **odometry of the craft**.
 
-### Obstacles
+### The obstacles
 The obstacles are always in a **fixed number**, **circular** and **located randomly**
 within the maze.
 
-### Driving the Craft
+### Driving the craft
 It is required to send a `yarp::os::Bottle` to the port `/assignment_solve-maze-handler/motor:i` containing two double representing the angular and the linear speed:
 ```c++
 yarp::os::Bottle &speed=portMotor.prepare();
@@ -37,7 +37,7 @@ speed.addDouble(100.0); // linear speed in percentage [-100%, 100%]
 port.write();
 ```
 
-### Scanning the Maze
+### Scanning the maze
 It is required to receive a `yarp::os::Property` from the port `/assignment_solve-maze-handler/radar:o` containing the up-to-date results of the scan and odometry in the following format:
 ```
 (length <l>) (time <t>) (craft (<x> <y> <d>)) (target (<x> <y> <r>)) (obstacles ((<x> <y> <r>) (<x> <y> <r>) ...)) (state <s>)
@@ -50,7 +50,7 @@ Where:
 - `<r>` represents the radius of the item (double).
 - `<s>` is the current state of the maze: one of {`running`, `crashed`, `expired`, `reached`} (string).
 
-### Crashing & Accomplishing
+### Crashing & accomplishing the task
 The craft is considered to be a **point** and can crash into obstacles as well as
 into maze walls. By contrast, the maze is solved whenever the craft is driven
 into the target area (still circular).
