@@ -1,0 +1,42 @@
+<application>
+
+  <name>Assignment on Solving a Maze</name>
+
+  <dependencies>
+  </dependencies>
+
+  <module>
+      <name>assignment_solve-maze-handler</name>
+      <node>localhost</node>
+  </module>
+
+  <module>
+      <name>assignment_solve-maze-craft</name>
+      <node>localhost</node>
+  </module>
+
+  <module>
+      <name>yarpview</name>
+      <parameters>--name /maze --w 500 --h 500 --x 100 --y 50 --compact</parameters>
+      <node>localhost</node>
+  </module>
+
+  <connection>
+      <from>/assignment_solve-maze-handler/radar:o</from>
+      <to>/assignment_solve-maze-craft/radar:i</to>
+      <protocol>tcp</protocol>
+  </connection>
+
+  <connection>
+      <from>/assignment_solve-maze-craft/motor:o</from>
+      <to>/assignment_solve-maze-handler/motor:i</to>
+      <protocol>tcp</protocol>
+  </connection>
+
+  <connection>
+      <from>/assignment_solve-maze-handler/maze:o</from>
+      <to>/maze</to>
+      <protocol>tcp</protocol>
+  </connection>
+
+</application>

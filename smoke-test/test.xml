@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="Test Assignment on Solving a Maze">
+    <description>Testing the assignment on Solving a Maze</description>
+    <fixture param="--fixture fixture.xml"> yarpmanager </fixture>
+
+    <test type="dll"> TestAssignmentSolveMaze </test>
+</suite>
