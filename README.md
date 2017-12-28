@@ -10,7 +10,7 @@ To solve the quest you need to know the following things.
 
 ### Maze
 The maze is a 2D square area containing the target, the craft and a number of
-obstacles. The origin `(0,0)` is located in the bottom-left corner of the picture
+obstacles. The origin `(0,0)` is located at the bottom-left corner of the picture
 above, whereas the x-axis is the left->right direction and the y-axis is the down->up
 direction.
 
