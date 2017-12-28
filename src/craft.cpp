@@ -196,6 +196,14 @@ class CraftModule : public RFModule {
     return steady.check(1.0);
   }
 
+  void stop() {
+    Bottle& motor = portMotor.prepare();
+    motor.clear();
+    motor.addDouble(0.0);
+    motor.addDouble(0.0);
+    portMotor.writeStrict();
+  }
+
  public:
   bool configure(ResourceFinder& rf)override {
     Rand::init();
@@ -255,11 +263,13 @@ class CraftModule : public RFModule {
       }
     } else if (state == State::rotating) {
       if (rotate()) {
+        stop();
         steady.clear();
         state = State::moving;
       }
     } else if (state == State::moving) {
       if (move()) {
+        stop(); 
         state = (norm(target.subVector(0, 1)) < target[2]) ?
             State::on_target : State::pickup_direction;
       }
