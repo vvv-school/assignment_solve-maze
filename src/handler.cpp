@@ -216,7 +216,7 @@ class HandlerModule : public RFModule {
     radar.put("target", target->getInfo().get(0));
 
     if (target->inside(craftPos))
-      state = "reached";
+      state = "solved";
 
     Bottle obstaclesInfo;
     Bottle& obstacles_ = obstaclesInfo.addList();

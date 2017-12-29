@@ -46,9 +46,9 @@ Where:
 - `<l>` represents the length of the maze wall (integer).
 - `<t>` is the current time in seconds (double).
 - `<x>`, `<y>` are the coordinates of the object within the maze (double).
-- `<d>` accounts for the current craft direction in degrees `[0, 360]` (double).
+- `<d>` accounts for the current craft direction in `[0, 360]` degrees (double).
 - `<r>` represents the radius of the object (double).
-- `<s>` is the current state of the maze: one of {`running`, `crashed`, `expired`, `reached`} (string).
+- `<s>` is the current state of the maze: one of {`running`, `crashed`, `expired`, `solved`} (string).
 
 ### Crashing & accomplishing the task
 The craft is considered to be a **point** and can crash into obstacles as well as

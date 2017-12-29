@@ -59,7 +59,7 @@ class TestAssignmentSolveMaze : public yarp::rtf::TestCase {
         break;
     }
 
-    RTF_TEST_CHECK(state == "reached",
+    RTF_TEST_CHECK(state == "solved",
                    Asserter::format("Final state = %s", state.c_str()));
   }
 };
