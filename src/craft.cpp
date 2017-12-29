@@ -202,6 +202,7 @@ class CraftModule : public RFModule {
     motor.addDouble(0.0);
     motor.addDouble(0.0);
     portMotor.writeStrict();
+    Time::delay(1.0);
   }
 
  public:
