@@ -193,7 +193,7 @@ class CraftModule : public RFModule {
     portMotor.writeStrict();
 
     steady.push(error);
-    return steady.check(1.0);
+    return steady.check(target[2]);
   }
 
   void stop() {
@@ -269,7 +269,7 @@ class CraftModule : public RFModule {
       }
     } else if (state == State::moving) {
       if (move()) {
-        stop(); 
+        stop();
         state = (norm(target.subVector(0, 1)) < target[2]) ?
             State::on_target : State::pickup_direction;
       }
