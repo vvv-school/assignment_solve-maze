@@ -20,7 +20,6 @@
 #include <yarp/os/RFModule.h>
 #include <yarp/os/BufferedPort.h>
 #include <yarp/sig/Vector.h>
-#include <yarp/sig/Matrix.h>
 #include <yarp/math/Math.h>
 #include <yarp/math/Rand.h>
 
