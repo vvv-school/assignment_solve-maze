@@ -227,8 +227,8 @@ class HandlerModule : public RFModule {
     }
     radar.put("obstacles", obstaclesInfo.get(0));
 
-    if ((craftPos[0] < 0) || (craftPos[0] > img.width()) ||
-        (craftPos[1] < 0) || (craftPos[1] > img.height()))
+    if ((craftPos[0] < 0) || (craftPos[0] >= img.width()) ||
+        (craftPos[1] < 0) || (craftPos[1] >= img.height()))
       state = "crashed";
 
     if (t > timeBudget)
