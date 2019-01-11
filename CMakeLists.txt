@@ -25,16 +25,15 @@ include(ICUBcontribOptions)
 # specify to install in $ICUBcontrib_DIR/bin
 icubcontrib_set_default_prefix()
 
-# import math symbols from standard cmath
-add_definitions(-D_USE_MATH_DEFINES)
-
 # maze handler
 add_executable(${PROJECT_NAME}-handler ${CMAKE_SOURCE_DIR}/src/handler.cpp)
+target_compile_definitions(${PROJECT_NAME}-handler PRIVATE _USE_MATH_DEFINES)
 target_link_libraries(${PROJECT_NAME}-handler ${YARP_LIBRARIES} ctrlLib ${OpenCV_LIBRARIES})
 install(TARGETS ${PROJECT_NAME}-handler DESTINATION bin)
 
 # maze craft
 add_executable(${PROJECT_NAME}-craft ${CMAKE_SOURCE_DIR}/src/craft.cpp)
+target_compile_definitions(${PROJECT_NAME}-craft PRIVATE _USE_MATH_DEFINES)
 target_link_libraries(${PROJECT_NAME}-craft ${YARP_LIBRARIES})
 install(TARGETS ${PROJECT_NAME}-craft DESTINATION bin)
 
