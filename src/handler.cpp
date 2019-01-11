@@ -26,6 +26,7 @@
 #include <yarp/sig/Matrix.h>
 #include <yarp/math/Math.h>
 #include <yarp/math/Rand.h>
+#include <yarp/cv/Cv.h>
 
 #include <iCub/ctrl/math.h>
 #include <iCub/ctrl/filters.h>
@@ -37,6 +38,7 @@ using namespace std;
 using namespace yarp::os;
 using namespace yarp::sig;
 using namespace yarp::math;
+using namespace yarp::cv;
 using namespace iCub::ctrl;
 
 
@@ -70,7 +72,7 @@ class CircleObject : public GraphicObject {
     cv::Point c_((int)c[0], (int)(img.height() - c[1]));
     int r_ = (int)r;
 
-    cv::Mat imgMat = cv::cvarrToMat(img.getIplImage());
+    cv::Mat imgMat = toCvMat(img);
     cv::circle(imgMat, c_, r_, fill_color, CV_FILLED);
     cv::circle(imgMat, c_, r_, bound_color, 1);
   }
@@ -175,7 +177,8 @@ class Craft : public GraphicObject {
     }
 
     vector<vector<cv::Point>> poly(1, pts);
-    cv::fillPoly(cv::cvarrToMat(img.getIplImage()), poly, color);
+    cv::Mat imgMat = toCvMat(img);
+    cv::fillPoly(imgMat, poly, color);
   }
 
   virtual ~Craft() {
