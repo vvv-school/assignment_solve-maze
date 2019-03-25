@@ -6,27 +6,27 @@
 
 #include <string>
 
-#include <rtf/dll/Plugin.h>
-#include <rtf/TestAssert.h>
+#include <robottestingframework/dll/Plugin.h>
+#include <robottestingframework/TestAssert.h>
 
-#include <yarp/rtf/TestCase.h>
+#include <yarp/robottestingframework/TestCase.h>
 #include <yarp/os/Network.h>
 #include <yarp/os/BufferedPort.h>
 #include <yarp/os/Property.h>
 
 using namespace std;
-using namespace RTF;
+using namespace robottestingframework;
 using namespace yarp::os;
 
 
 /**********************************************************************/
-class TestAssignmentSolveMaze : public yarp::rtf::TestCase {
+class TestAssignmentSolveMaze : public yarp::robottestingframework::TestCase {
   BufferedPort<Property> portRadar;
 
  public:
   /******************************************************************/
   TestAssignmentSolveMaze() :
-      yarp::rtf::TestCase("TestAssignmentSolveMaze") {
+      yarp::robottestingframework::TestCase("TestAssignmentSolveMaze") {
   }
 
   /******************************************************************/
@@ -36,7 +36,7 @@ class TestAssignmentSolveMaze : public yarp::rtf::TestCase {
   /******************************************************************/
   bool setup(yarp::os::Property& property)override {
     portRadar.open("/" + getName() + "/radar:i");
-    RTF_ASSERT_ERROR_IF_FALSE(Network::connect("/assignment_solve-maze-handler/radar:o",
+    ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(Network::connect("/assignment_solve-maze-handler/radar:o",
                                                portRadar.getName()),
                               "Unable to connect to maze handler");
     return true;
@@ -49,7 +49,7 @@ class TestAssignmentSolveMaze : public yarp::rtf::TestCase {
 
   /******************************************************************/
   void run()override {
-    RTF_TEST_REPORT("Checking maze status");
+    ROBOTTESTINGFRAMEWORK_TEST_REPORT("Checking maze status");
 
     string state;
     while (true) {
@@ -59,9 +59,9 @@ class TestAssignmentSolveMaze : public yarp::rtf::TestCase {
         break;
     }
 
-    RTF_TEST_CHECK(state == "solved",
+    ROBOTTESTINGFRAMEWORK_TEST_CHECK(state == "solved",
                    Asserter::format("Final state = %s", state.c_str()));
   }
 };
 
-PREPARE_PLUGIN(TestAssignmentSolveMaze)
+ROBOTTESTINGFRAMEWORK_PREPARE_PLUGIN(TestAssignmentSolveMaze)
