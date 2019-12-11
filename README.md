@@ -1,7 +1,7 @@
 Solve a Maze
 ============
 
-[![Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://www.gitpod.io/docs/10_getting_started)
+[![Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/vvv-school/assignment_solve-maze)
 
 # Assignment
 Design and implement an autonomous driving system that will move the craft toward the target while avoiding the obstacles.
