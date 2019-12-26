@@ -9,7 +9,7 @@ project(assignment_solve-maze)
 
 # mandatory use of these packages
 find_package(ICUBcontrib REQUIRED)
-find_package(YARP 3.1.101 REQUIRED COMPONENTS OS sig math cv)
+find_package(YARP 3.3.0 REQUIRED COMPONENTS os sig math cv)
 find_package(ICUB REQUIRED)
 
 # extend the current search path used by cmake to load helpers
