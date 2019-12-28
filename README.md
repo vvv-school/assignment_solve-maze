@@ -6,7 +6,7 @@ Solve a Maze
 # Assignment
 Design and implement an autonomous driving system that will move the craft toward the target while avoiding the obstacles.
 
-![maze](/misc/maze.png)
+![maze](/assets/maze.png)
 
 To solve the quest you need to know the following things.
 
