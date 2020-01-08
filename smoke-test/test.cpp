@@ -36,9 +36,8 @@ class TestAssignmentSolveMaze : public yarp::robottestingframework::TestCase {
   /******************************************************************/
   bool setup(yarp::os::Property& property)override {
     portRadar.open("/" + getName() + "/radar:i");
-    ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(Network::connect("/assignment_solve-maze-handler/radar:o",
-                                               portRadar.getName()),
-                              "Unable to connect to maze handler");
+    if (!Network::connect("/assignment_solve-maze-handler/radar:o",portRadar.getName()))
+        ROBOTTESTINGFRAMEWORK_ASSERT_FAIL("Unable to connect to maze handler");
     return true;
   }
 
