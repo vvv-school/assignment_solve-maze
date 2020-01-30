@@ -11,6 +11,7 @@
 #include <cmath>
 #include <limits>
 
+#include <opencv2/core.hpp>
 #include <opencv2/opencv.hpp>
 
 #include <yarp/os/Network.h>
@@ -73,7 +74,7 @@ class CircleObject : public GraphicObject {
     int r_ = (int)r;
 
     cv::Mat imgMat = toCvMat(img);
-    cv::circle(imgMat, c_, r_, fill_color, CV_FILLED);
+    cv::circle(imgMat, c_, r_, fill_color, cv::FILLED);
     cv::circle(imgMat, c_, r_, bound_color, 1);
   }
 
