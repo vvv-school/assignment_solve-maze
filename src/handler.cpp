@@ -208,8 +208,8 @@ class HandlerModule : public RFModule {
 
     Bottle craftInfo = *craft->getInfo().get(0).asList();
     Vector craftPos(2);
-    craftPos[0] = craftInfo.get(0).asDouble();
-    craftPos[1] = craftInfo.get(1).asDouble();
+    craftPos[0] = craftInfo.get(0).asFloat64();
+    craftPos[1] = craftInfo.get(1).asFloat64();
 
     Property& radar = portRadar.prepare();
     radar.clear();
@@ -245,7 +245,7 @@ class HandlerModule : public RFModule {
 
  public:
   bool configure(ResourceFinder& rf)override {
-    timeBudget = rf.check("time-budget", Value(numeric_limits<double>::infinity())).asDouble();
+    timeBudget = rf.check("time-budget", Value(numeric_limits<double>::infinity())).asFloat64();
     Rand::init();
 
     Vector target_c(2, MAZE_L - 50.0);
@@ -293,8 +293,8 @@ class HandlerModule : public RFModule {
       double t = Time::now() - t0;
       if (Bottle* cmd = portMotor.read(false)) {
         if (cmd->size() >= 2) {
-          velocity[0] = cmd->get(0).asDouble();
-          velocity[1] = cmd->get(1).asDouble();
+          velocity[0] = cmd->get(0).asFloat64();
+          velocity[1] = cmd->get(1).asFloat64();
         }
       }
 

@@ -88,11 +88,11 @@ class CraftModule : public RFModule {
     if (Property* radar = portRadar.read(false)) {
       if (Bottle* b = radar->find("craft").asList())
         for (int i = 0; i < b->size(); i++)
-          craft[i] = b->get(i).asDouble();
+          craft[i] = b->get(i).asFloat64();
 
       if (Bottle* b = radar->find("target").asList())
         for (int i = 0; i < b->size(); i++)
-          target[i] = b->get(i).asDouble();
+          target[i] = b->get(i).asFloat64();
       target[0] -= craft[0];
       target[1] -= craft[1];
 
@@ -102,7 +102,7 @@ class CraftModule : public RFModule {
           if (Bottle* o = b->get(i).asList()) {
             Vector obstacle(o->size());
             for (int j = 0; j < o->size(); j++)
-              obstacle[j] = o->get(j).asDouble();
+              obstacle[j] = o->get(j).asFloat64();
             obstacle[0] -= craft[0];
             obstacle[1] -= craft[1];
             obstacles.push_back(obstacle);
@@ -110,7 +110,7 @@ class CraftModule : public RFModule {
         }
       }
 
-      double length = radar->find("length").asDouble();
+      double length = radar->find("length").asFloat64();
       walls[0][0] = length - craft[0];
       walls[0][1] = 0.0;
       walls[1][0] = 0.0;
@@ -166,8 +166,8 @@ class CraftModule : public RFModule {
     double error = RAD2DEG * direction - craft[2];
     double vel = std::min(std::max(error, -100.0), 100.0);
 
-    motor.addDouble(0.0);
-    motor.addDouble(vel);
+    motor.addFloat64(0.0);
+    motor.addFloat64(vel);
     portMotor.writeStrict();
 
     steady.push(error);
@@ -187,8 +187,8 @@ class CraftModule : public RFModule {
     double error = sign(dot(dir, dist)) * norm(dist);
     double vel = std::min(std::max(error, -100.0), 100.0);
 
-    motor.addDouble(vel);
-    motor.addDouble(0.0);
+    motor.addFloat64(vel);
+    motor.addFloat64(0.0);
     portMotor.writeStrict();
 
     steady.push(error);
@@ -198,8 +198,8 @@ class CraftModule : public RFModule {
   void stop() {
     Bottle& motor = portMotor.prepare();
     motor.clear();
-    motor.addDouble(0.0);
-    motor.addDouble(0.0);
+    motor.addFloat64(0.0);
+    motor.addFloat64(0.0);
     portMotor.writeStrict();
     Time::delay(1.0);
   }
