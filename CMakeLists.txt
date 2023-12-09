@@ -27,7 +27,7 @@ icubcontrib_set_default_prefix()
 # maze handler
 add_executable(${PROJECT_NAME}-handler ${CMAKE_SOURCE_DIR}/src/handler.cpp)
 target_compile_definitions(${PROJECT_NAME}-handler PRIVATE _USE_MATH_DEFINES)
-target_link_libraries(${PROJECT_NAME}-handler ${YARP_LIBRARIES} ctrlLib ${OpenCV_LIBRARIES})
+target_link_libraries(${PROJECT_NAME}-handler ${YARP_LIBRARIES} ctrlLib ${OpenCV_LIBS})
 install(TARGETS ${PROJECT_NAME}-handler DESTINATION bin)
 
 # maze craft
